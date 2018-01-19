@@ -4,9 +4,7 @@ import logger       from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser   from 'body-parser';
 import http         from 'http'
-
-import routeProducts       from './routes/products';
-import routeIndex       from './routes/index';
+import {readdirSync} from 'fs';
 
 var app = express();
 const server = http.createServer(app);
@@ -17,20 +15,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.set("view engine","twig");
-app.use(express.static('views'));
 
-// app.get('/', routeIndex);
-app.use('/products', routeProducts);
-app.get('/products/list', function(req, res) {
-    var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('database.sqlite');
+app.use(express.static(__dirname + '/common/styles'));
+app.use(express.static(__dirname + '/common/img'));
 
-    db.all("SELECT * FROM products", function(err, rows) {
-        res.render('list', {products: rows});
-    });
-
-    db.close();
-})
+readdirSync(__dirname + '/routes')
+.map(name => {
+  let router = require('./routes/' + name).default;
+  app.set("views", __dirname + '/routes/' + name + '/views');
+  app.use('/' + name, router);
+});
 
 app.close = function() {
     server.close();

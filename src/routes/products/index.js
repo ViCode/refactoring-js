@@ -1,7 +1,18 @@
 var express = require('express');
-import { isAuth } from '../lib/middleware'
+import { isAuth } from '../../common/lib/middleware';
 
 const router =  express.Router();
+
+router.get('/list', isAuth, function(req, res) {
+  var sqlite3 = require('sqlite3').verbose();
+  var db = new sqlite3.Database('database.sqlite');
+
+  db.all("SELECT * FROM products", function(err, rows) {
+      res.render('list', {products: rows});
+  });
+
+  db.close();
+});
 
 router.get('/view/:id', isAuth, function(req, res) {
     var id = req.params.id;

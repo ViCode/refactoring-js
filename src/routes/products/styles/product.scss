@@ -1,0 +1,17 @@
+.listing{
+    margin-top: 25px;
+    li {
+      display: inline-block;
+      width: 40%;
+      margin: 5% 0;
+      button {
+        border: none;
+        background: transparent;
+        color: #FFF;
+      }
+    }
+}
+
+section.container{
+    margin-top: 15px;
+}
