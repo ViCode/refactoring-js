@@ -17,6 +17,7 @@ app.set("view engine","twig");
 
 app.use(express.static(__dirname + '/common/styles'));
 app.use(express.static(__dirname + '/common/img'));
+app.set("views", __dirname + '/common/views');
 
 // reading all folders in 'routes' folder in order to set them as new node routes
 readdirSync(__dirname + '/routes')
