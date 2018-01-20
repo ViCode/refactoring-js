@@ -2,11 +2,19 @@
   "en": {
     "buttonViewMore": "View More",
     "buttonBuy": "Buy",
-    "bought": "Product ${name} successfully bought"
+    "bought": "Product ${name} successfully bought",
+    "productListTitle": "CHANEL - perfume list",
+    "productListDesc": "Find all the luxurious perfume from CHANEL",
+    "productViewTitle": "CHANEL - ${name}",
+    "productViewDesc": "Find all details about ${name} from CHANEL"
   },
   "fr": {
     "buttonViewMore": "Voir plus",
     "buttonBuy": "Acheter",
-    "bought": "Produit ${name} acheté avec succès"
+    "bought": "Produit ${name} acheté avec succès",
+    "productListTitle": "CHANEL - liste des parfums",
+    "productListDesc": "Retrouver tous les luxueux parfums de CHANEL",
+    "productViewTitle": "CHANEL - ${name}",
+    "productViewDesc": "Retrouver tous les détails sur ${name} de CHANEL"
   }
 }
