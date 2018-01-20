@@ -12,7 +12,7 @@
       <p>{{ product.description }}</p>
       <p>Stock level:
         {{ product.stock }}</p>
-      <a class="btn btn-primary" href="/products/cart/{{ product.id }}">Buy</a>
+      <a class="btn btn-primary" href="/products/cart/{{ product.id }}">{{buttonBuy}}</a>
     </div>
   </div>
 {% endblock %}

@@ -2,11 +2,11 @@
   "en": {
     "buttonViewMore": "View More",
     "buttonBuy": "Buy",
-    "bought": "Successfully bought"
+    "bought": "Product ${name} successfully bought"
   },
   "fr": {
     "buttonViewMore": "Voir plus",
     "buttonBuy": "Acheter",
-    "bought": "Acheter avec succès"
+    "bought": "Produit ${name} acheté avec succès"
   }
 }

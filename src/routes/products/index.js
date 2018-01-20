@@ -7,7 +7,10 @@ const router =  express.Router();
 router.get('/list', isAuth, (req, res) => {
     productDbo.getList()
     .then(
-      (rows) => res.render('list', {products: rows}),
+      (rows) => res.render('list', {
+        products: rows,
+        buttonViewMore: req.t('buttonViewMore')
+      }),
       (err) => console.error(err)
     );
 });
@@ -15,7 +18,10 @@ router.get('/list', isAuth, (req, res) => {
 router.get('/view/:id', isAuth, (req, res) => {
     let id = req.params.id;
     productDbo.getItem(id).then(
-      (row) => res.render('view', {product: row}),
+      (row) => res.render('view', {
+        product: row,
+        buttonBuy: req.t('buttonBuy')
+      }),
       (err) => console.error(err)
     );
 });
@@ -23,7 +29,7 @@ router.get('/view/:id', isAuth, (req, res) => {
 router.get('/cart/:id', isAuth, function(req, res) {
   let id = req.params.id;
   productDbo.getItem(id).then(
-    (row) => res.json({success:true, text: "Product " + row.id + " successfully bought"}),
+    (row) => res.json({success:true, text: req.t('bought', {name:row.name})}),
     (err) => console.error(err)
   );
 });
