@@ -4,7 +4,7 @@ import server from '../src/app';
 
 use(chaiHttp);
 
-describe('Products', () => {
+describe('Products routes', () => {
 
   describe('List', () => {
     it('Should load correctly', (done) => {
