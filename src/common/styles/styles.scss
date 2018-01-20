@@ -2,6 +2,13 @@ header{
     padding: 70px 0;
 }
 
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
 ul{
     list-style: none;
 }
@@ -10,8 +17,16 @@ a[href].btn-primary{
     outline:none;
 }
 
-a.logo{
-    height:55px;
-    width:350px;
-    background: url("http://www.chanel.com/img/logo_chanel.svg") scroll no-repeat top left;
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  a.logo{
+      height:55px;
+      width:350px;
+      margin:auto;
+      display:block;
+      background: url("http://www.chanel.com/img/logo_chanel.svg") scroll no-repeat top left;
+  }
 }
