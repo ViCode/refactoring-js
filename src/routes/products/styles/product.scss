@@ -14,4 +14,9 @@
 
 section.container{
     margin-top: 15px;
+    .card-text {
+      height:85px;
+      white-space: unset;
+      overflow:hidden;
+    }
 }
