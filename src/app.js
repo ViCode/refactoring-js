@@ -1,5 +1,4 @@
-"use strict";
-var express = require('express');
+import express      from 'express';
 import logger       from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser   from 'body-parser';
@@ -19,6 +18,7 @@ app.set("view engine","twig");
 app.use(express.static(__dirname + '/common/styles'));
 app.use(express.static(__dirname + '/common/img'));
 
+// reading all folders in 'routes' folder in order to set them as new node routes
 readdirSync(__dirname + '/routes')
 .map(name => {
   let router = require('./routes/' + name).default;

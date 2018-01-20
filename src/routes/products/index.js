@@ -1,44 +1,31 @@
-var express = require('express');
+import express from 'express';
 import { isAuth } from '../../common/lib/middleware';
+import {productDbo} from '../../common/dbo/product.dbo';
 
 const router =  express.Router();
 
-router.get('/list', isAuth, function(req, res) {
-  var sqlite3 = require('sqlite3').verbose();
-  var db = new sqlite3.Database('database.sqlite');
-
-  db.all("SELECT * FROM products", function(err, rows) {
-      res.render('list', {products: rows});
-  });
-
-  db.close();
+router.get('/list', isAuth, (req, res) => {
+    productDbo.getList()
+    .then(
+      (rows) => res.render('list', {products: rows}),
+      (err) => console.error(err)
+    );
 });
 
-router.get('/view/:id', isAuth, function(req, res) {
-    var id = req.params.id;
-    var sqlite3 = require('sqlite3').verbose();
-    let db = new sqlite3.Database('database.sqlite');
-
-    db.get("SELECT * FROM products WHERE id = " + id, function(err, row) {
-        console.log(row);
-        res.render('view', {product: row});
-    });
-
-    db.close();
+router.get('/view/:id', isAuth, (req, res) => {
+    let id = req.params.id;
+    productDbo.getItem(id).then(
+      (row) => res.render('view', {product: row}),
+      (err) => console.error(err)
+    );
 });
 
 router.get('/cart/:id', isAuth, function(req, res) {
-    var id = req.params.id;
-    var sqlite3 = require('sqlite3').verbose();
-    var db = new sqlite3.Database('database.sqlite');
-
-    db.get("SELECT * FROM products WHERE id = " + id, function(err, row) {
-        console.log(row);
-        res.json({success:true, text: "Product " + id + " successfully bought"})
-    });
-
-    db.close();
+  let id = req.params.id;
+  productDbo.getItem(id).then(
+    (row) => res.json({success:true, text: "Product " + row.id + " successfully bought"}),
+    (err) => console.error(err)
+  );
 });
-
 
 export default router;
