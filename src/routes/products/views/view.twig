@@ -1,10 +1,15 @@
 {% extends "../../../common/views/layout.parent.twig" %}
 
+{% block head %}
+  <title>{{title}}</title>
+  <meta name="description" content="{{desc}}">
+{% endblock %}
+
 {% block content %}
   <div class="row">
     <div class="col-4">
       <figure>
-        <img class="card-img-top" src="/{{ product.image }}"/>
+        <img class="card-img-top" src="/{{ product.image }}" alt="{{ product.image }}"/>
         <figcaption>{{ product.name }}</figcaption>
       </figure>
     </div>
