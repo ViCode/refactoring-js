@@ -18,7 +18,7 @@ gulp.task('json', () => {
 });
 
 gulp.task('views', () => {
-    return gulp.src(['src/routes/**/views/*'], {base: "."})
+    return gulp.src(['src/routes/**/views/*', 'src/common/views/*'], {base: "."})
         .pipe(gulp.dest('dist'))
 });
 
