@@ -1,9 +1,5 @@
 import constants from '../config/constants'
 
-function isAuth(req, res, next) {
+export let isAuth = (req, res, next) => {
     next()
-}
-
-export {
-    isAuth
 }
