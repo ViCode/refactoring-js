@@ -1,1 +1,1 @@
-export * from 'product.dbo';
+export * from './product.dbo';
